@@ -12,8 +12,8 @@ public class StoreApplication {
         var orderService = context.getBean(OrderService.class);
         orderService.placeOrder();
 
-        var notificationService = context.getBean(NotificationService.class);
-        notificationService.send("This is the test message");
+//        var notificationService = context.getBean(NotificationService.class);
+//        notificationService.send("This is the test message");
     }
 
 }
