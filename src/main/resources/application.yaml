@@ -8,3 +8,6 @@ stripe:
   supported-curries : USD, EUR, GPB
 payment:
   service: paypal
+mail:
+  host: https://smtp.gmail.com
+  port: 5761
