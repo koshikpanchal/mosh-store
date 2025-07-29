@@ -1,4 +1,4 @@
-package com.koshikpanchal.store;
+package com.koshikpanchal.store.test;
 
 public class User {
 

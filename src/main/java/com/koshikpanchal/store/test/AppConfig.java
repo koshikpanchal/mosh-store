@@ -1,4 +1,4 @@
-package com.koshikpanchal.store;
+package com.koshikpanchal.store.test;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

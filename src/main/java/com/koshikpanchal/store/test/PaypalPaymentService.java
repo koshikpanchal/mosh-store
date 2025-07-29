@@ -1,6 +1,4 @@
-package com.koshikpanchal.store;
-
-import org.springframework.stereotype.Service;
+package com.koshikpanchal.store.test;
 
 //@Service("paypal")
 public class PaypalPaymentService implements PaymentService {

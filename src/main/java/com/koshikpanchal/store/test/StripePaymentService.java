@@ -1,7 +1,4 @@
-package com.koshikpanchal.store;
-
-import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Service;
+package com.koshikpanchal.store.test;
 
 //@Service("stripe")
 //@Primary
