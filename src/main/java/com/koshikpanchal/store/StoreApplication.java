@@ -14,10 +14,10 @@ public class StoreApplication {
 
 //        var notificationService = context.getBean(NotificationService.class);
 //        notificationService.send("This is the test message");
-
-        var userService = context.getBean(UserService.class);
-        userService.registerUser(new User(1L, "koshikpanchal@gmail.com", "1234", "koshik"));
-        userService.registerUser(new User(1L, "koshikpanchal@gmail.com", "1234", "koshik"));
+//
+//        var userService = context.getBean(UserService.class);
+//        userService.registerUser(new User(1L, "koshikpanchal@gmail.com", "1234", "koshik"));
+//        userService.registerUser(new User(1L, "koshikpanchal@gmail.com", "1234", "koshik"));
     }
 
 }
