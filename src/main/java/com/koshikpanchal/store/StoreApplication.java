@@ -11,11 +11,7 @@ public class StoreApplication {
 
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(StoreApplication.class, args);
-        var repositories =  context.getBean(UserRepository.class);
 
-        var user = User.builder().name("Koshik").email("kpanchal@ta.com").password("kpkpkp").build();
-
-        repositories.save(user);
     }
 
 }
