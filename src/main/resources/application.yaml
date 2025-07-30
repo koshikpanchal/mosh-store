@@ -5,6 +5,8 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/store?createDatabaseIfNotExist=true
     username: root
     password: root@1234
+  jpa:
+    show-sql: true
 stripe:
   apiUrl: https://api.stripe.com
   timeout: 1000
