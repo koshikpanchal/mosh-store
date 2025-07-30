@@ -1,9 +1,6 @@
 package com.koshikpanchal.store;
 
-import com.koshikpanchal.store.entity.User;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
 
 @SpringBootApplication
 public class StoreApplication {

@@ -1,36 +1,33 @@
 package com.koshikpanchal.store.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 
-@Setter
 @Getter
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
+@Setter
 @Entity
-@Table(name = "address")
+@Table(name = "addresses")
 public class Address {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false, name = "id")
+    @Column(name = "id")
     private Long id;
 
-    @Column(nullable = false, name = "street")
+    @Column(name = "street")
     private String street;
 
-    @Column(nullable = false, name = "city")
+    @Column(name = "city")
     private String city;
 
-    @Column(nullable = false, name = "zip")
+    @Column(name = "zip")
     private String zip;
 
-    @Column(nullable = false, name = "state")
-    private String state;
-
-    @ManyToMany
-    @JoinColumn(name="user_id")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id")
     private User user;
+
+    @Column(name = "state")
+    private String state;
 
 }

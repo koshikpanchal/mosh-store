@@ -3,28 +3,36 @@ package com.koshikpanchal.store.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.ColumnDefault;
 
-@Setter
+import java.time.LocalDate;
+
 @Getter
+@Setter
 @Entity
-@Table(name = "profile")
+@Table(name = "profiles", schema = "store")
 public class Profile {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false, name = "id")
+    @Column(name = "id")
     private Long id;
 
-    @Column(nullable = false, name = "bio")
+    @MapsId
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "id")
+    private User users;
+
+    @Lob
+    @Column(name = "bio")
     private String bio;
 
-    @Column(nullable = false, name = "phone_number")
-    private String phone_number;
+    @Column(name = "phone_number", length = 15)
+    private String phoneNumber;
 
-    @Column(nullable = false, name = "date_of_birth")
-    private String date_of_birth;
+    @Column(name = "date_of_birth")
+    private LocalDate dateOfBirth;
 
-    @Column(nullable = false, name = "loyalty_points")
-    private String loyalty_points;
+    @ColumnDefault("'0'")
+    @Column(name = "loyalty_points", columnDefinition = "int UNSIGNED")
+    private Long loyaltyPoints;
 
 }

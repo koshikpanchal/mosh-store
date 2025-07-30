@@ -1,46 +1,38 @@
 package com.koshikpanchal.store.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
 
-@Setter
 @Getter
+@Setter
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
-@Table(name = "user")
+@Table(name = "users", schema = "store")
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false, name = "id")
+    @Column(name = "id")
     private Long id;
 
-    @Column(nullable = false, name = "name")
+    @Column(name = "name")
     private String name;
 
-    @Column(nullable = false, name = "email")
+    @Column(name = "email")
     private String email;
 
-    @Column(nullable = false, name = "password")
+    @Column(name = "password")
     private String password;
 
     @OneToMany(mappedBy = "user")
-    private List<Address> addresses = new ArrayList<>();
+    private Set<Address> addresses = new HashSet<>();
 
-    public void addAddress(Address address) {
-        addresses.add(address);
-        address.getUser();
-    }
+    @OneToOne(mappedBy = "id")
+    private Profile profile;
 
-    public void removeAddress(Address address) {
-        addresses.remove(address);
-        address.setUser(null);
-    }
+    @ManyToMany
+    private Set<Tag> tags = new HashSet<>();
 
 }
