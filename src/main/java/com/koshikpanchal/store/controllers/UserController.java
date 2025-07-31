@@ -1,5 +1,6 @@
 package com.koshikpanchal.store.controllers;
 
+import com.koshikpanchal.store.dtos.RegisterUserRequest;
 import com.koshikpanchal.store.dtos.UserDto;
 import com.koshikpanchal.store.mapper.UserMapper;
 import com.koshikpanchal.store.repositories.UserRepository;
@@ -7,6 +8,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.Set;
 
@@ -37,5 +39,18 @@ public class UserController {
         }
 
         return ResponseEntity.ok(userMapper.toDto(user));
+    }
+
+    @PostMapping
+    public ResponseEntity<UserDto> addUser(
+            @RequestBody RegisterUserRequest request,
+            UriComponentsBuilder uriComponentsBuilder
+    ) {
+        var user = userMapper.toEntity(request);
+        userRepository.save(user);
+
+        var userDto = userMapper.toDto(user);
+        var uri = uriComponentsBuilder.path("/user/{id}").buildAndExpand(userDto.getId()).toUri();
+        return ResponseEntity.created(uri).body(userDto);
     }
 }
