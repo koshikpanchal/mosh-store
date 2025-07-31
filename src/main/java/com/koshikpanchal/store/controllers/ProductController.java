@@ -36,7 +36,6 @@ public class ProductController {
     @GetMapping("/{id}")
     public ResponseEntity<ProductDto> getProductById(@PathVariable Long id) {
         var product = productRepository.findById(id).orElse(null);
-
         if(product == null) {
             ResponseEntity.notFound().build();
         }
@@ -55,6 +54,29 @@ public class ProductController {
         newProduct.setCategory(category);
         productRepository.save(newProduct);
         productDto.setId(newProduct.getId());
+
+        return ResponseEntity.ok(productDto);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ProductDto> updateProduct(
+            @PathVariable Long id,
+            @RequestBody ProductDto productDto
+    ) {
+        var category = categoryRepository.findById(productDto.getCategoryId()).orElse(null);
+        if (category == null) {
+            return ResponseEntity.badRequest().build();
+        }
+
+        var product = productRepository.findById(id).orElse(null);
+        if(product == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        productMapper.update(productDto, product);
+        productRepository.save(product);
+        product.setCategory(category);
+        productDto.setId(product.getId());
 
         return ResponseEntity.ok(productDto);
     }
