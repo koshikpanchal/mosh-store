@@ -1,6 +1,7 @@
 package com.koshikpanchal.store.controllers;
 
 import com.koshikpanchal.store.dtos.RegisterUserRequest;
+import com.koshikpanchal.store.dtos.UpdateUserRequest;
 import com.koshikpanchal.store.dtos.UserDto;
 import com.koshikpanchal.store.mapper.UserMapper;
 import com.koshikpanchal.store.repositories.UserRepository;
@@ -52,5 +53,22 @@ public class UserController {
         var userDto = userMapper.toDto(user);
         var uri = uriComponentsBuilder.path("/user/{id}").buildAndExpand(userDto.getId()).toUri();
         return ResponseEntity.created(uri).body(userDto);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<UserDto> updateUser(
+            @PathVariable(name = "id") Long id,
+            @RequestBody UpdateUserRequest request
+    ) {
+        var user = userRepository.findById(id).orElse(null);
+
+        if (user == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        userMapper.update(request, user);
+        userRepository.save(user);
+
+        return ResponseEntity.ok(userMapper.toDto(user));
     }
 }
