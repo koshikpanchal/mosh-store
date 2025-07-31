@@ -1,4 +1,4 @@
-package com.koshikpanchal.store.test;
+package com.koshikpanchal.store.mosh;
 
 //@Service("paypal")
 public class PaypalPaymentService implements PaymentService {

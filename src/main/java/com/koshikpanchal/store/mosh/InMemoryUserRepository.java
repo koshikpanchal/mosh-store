@@ -1,4 +1,4 @@
-package com.koshikpanchal.store.test;
+package com.koshikpanchal.store.mosh;
 
 import org.springframework.stereotype.Repository;
 
