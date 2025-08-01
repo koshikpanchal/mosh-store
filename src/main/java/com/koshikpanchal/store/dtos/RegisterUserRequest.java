@@ -1,5 +1,6 @@
 package com.koshikpanchal.store.dtos;
 
+import com.koshikpanchal.store.validation.Lowercase;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -13,6 +14,7 @@ public class RegisterUserRequest {
 
     @NotBlank
     @Email
+    @Lowercase
     private String email;
 
     @NotBlank
