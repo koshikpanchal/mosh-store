@@ -3,11 +3,11 @@ package com.koshikpanchal.store.mosh;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserService {
-    private final  UserRepository userRepository;
+public class OldUserService {
+    private final UserRepository userRepository;
     private final NotificationService notificationService;
 
-    public UserService(UserRepository userRepository, NotificationService notificationService) {
+    public OldUserService(UserRepository userRepository, NotificationService notificationService) {
         this.userRepository = userRepository;
         this.notificationService = notificationService;
     }
