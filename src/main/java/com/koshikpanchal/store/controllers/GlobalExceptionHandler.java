@@ -15,7 +15,7 @@ public class GlobalExceptionHandler {
             MethodArgumentNotValidException exception
     ) {
         var errors = new HashMap<String, String>();
-        exception.getBindingResult().getFieldErrors().forEach( error ->
+        exception.getBindingResult().getFieldErrors().forEach(error ->
                 errors.put(error.getField(), error.getDefaultMessage())
         );
 
