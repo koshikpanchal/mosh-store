@@ -39,7 +39,6 @@ public class AuthController {
             @RequestHeader("Authorization") String authHeader
     ) {
         var token = authHeader.replace("Bearer ", "");
-
         return jwtService.validateToken(token);
     }
 
