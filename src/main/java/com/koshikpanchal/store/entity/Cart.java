@@ -55,7 +55,7 @@ public class Cart {
 
     public void removeItem(Long productId) {
         var cartItem = getItem(productId);
-        if(cartItem != null) {
+        if (cartItem != null) {
             items.remove(cartItem);
             cartItem.setCart(null);
         }
@@ -63,6 +63,10 @@ public class Cart {
 
     public void clear() {
         items.clear();
+    }
+
+    public boolean isEmpty() {
+        return items.isEmpty();
     }
 
 }
