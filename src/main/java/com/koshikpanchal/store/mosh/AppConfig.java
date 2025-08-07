@@ -20,10 +20,10 @@ public class AppConfig {
     }
 
     @Bean
-    public OrderService orderService() {
-        if(paymentMethod.equals("stripe")){
-            return new OrderService(stripe());
+    public OrderServiceMosh orderServiceMosh() {
+        if (paymentMethod.equals("stripe")) {
+            return new OrderServiceMosh(stripe());
         }
-        return new OrderService(paypal());
+        return new OrderServiceMosh(paypal());
     }
 }

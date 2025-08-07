@@ -1,11 +1,11 @@
 package com.koshikpanchal.store.mosh;
 
 //@Service
-public class OrderService {
+public class OrderServiceMosh {
 
     private PaymentService paymentService;
 
-    public OrderService (PaymentService paymentService) {
+    public OrderServiceMosh(PaymentService paymentService) {
         this.paymentService = paymentService;
     }
 
