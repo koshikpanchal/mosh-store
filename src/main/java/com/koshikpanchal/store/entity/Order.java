@@ -34,8 +34,7 @@ public class Order {
     @Column(name = "total_price")
     private BigDecimal totalPrice;
 
-    @OneToMany
-    @JoinColumn(name = "order_id")
-    private Set<OderItem> items = new LinkedHashSet<>();
+    @OneToMany(mappedBy = "order", cascade = CascadeType.PERSIST)
+    private Set<OrderItem> items = new LinkedHashSet<>();
 
 }
