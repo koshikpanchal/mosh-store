@@ -1,9 +1,6 @@
 package com.koshikpanchal.store.controllers;
 
-import com.koshikpanchal.store.dtos.AddItemToCartRequest;
-import com.koshikpanchal.store.dtos.CartDto;
-import com.koshikpanchal.store.dtos.CartItemDto;
-import com.koshikpanchal.store.dtos.UpdateCartItemRequest;
+import com.koshikpanchal.store.dtos.*;
 import com.koshikpanchal.store.exceptions.CartNotFoundException;
 import com.koshikpanchal.store.exceptions.ProductNotFoundException;
 import com.koshikpanchal.store.services.CartService;
@@ -14,7 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
 import java.util.UUID;
 
 @RestController
@@ -74,12 +70,12 @@ public class CartController {
     }
 
     @ExceptionHandler(CartNotFoundException.class)
-    public ResponseEntity<Map<String, String>> handleCartNotFound() {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("error", "Cart not found"));
+    public ResponseEntity<ErrorDto> handleCartNotFound() {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorDto("cart not found"));
     }
 
     @ExceptionHandler(ProductNotFoundException.class)
-    public ResponseEntity<Map<String, String>> handleProductNotFound() {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("error", "Product not found"));
+    public ResponseEntity<ErrorDto> handleProductNotFound() {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorDto("product not found"));
     }
 }

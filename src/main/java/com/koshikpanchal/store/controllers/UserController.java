@@ -1,9 +1,6 @@
 package com.koshikpanchal.store.controllers;
 
-import com.koshikpanchal.store.dtos.ChangePasswordRequest;
-import com.koshikpanchal.store.dtos.RegisterUserRequest;
-import com.koshikpanchal.store.dtos.UpdateUserRequest;
-import com.koshikpanchal.store.dtos.UserDto;
+import com.koshikpanchal.store.dtos.*;
 import com.koshikpanchal.store.entity.Role;
 import com.koshikpanchal.store.mapper.UserMapper;
 import com.koshikpanchal.store.repositories.UserRepository;
@@ -16,7 +13,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.util.Map;
 import java.util.Set;
 
 @RestController
@@ -56,7 +52,7 @@ public class UserController {
     ) {
         if (userRepository.existsByEmail(request.getEmail())) {
             return ResponseEntity.badRequest().body(
-                    Map.of("email", "Email is already registered")
+                    new ErrorDto("Email already registered")
             );
         }
 
