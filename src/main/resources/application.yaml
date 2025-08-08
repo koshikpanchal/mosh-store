@@ -12,10 +12,9 @@ spring:
     accessTokenExpiration: 7200 #2hr
     refreshTokenExpiration: 604800 #7d
 stripe:
-  apiUrl: https://api.stripe.com
-  timeout: 1000
-  enabled: true
-  supported-curries: USD, EUR, GPB
+  secretKey: ${STRIPE_SECRET_KEY}
+
+websiteUrl: http://localhost:4242
 payment:
   service: paypal
 mail:
