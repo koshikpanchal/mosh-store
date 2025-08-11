@@ -24,6 +24,11 @@ public class StripePaymentGateway implements PaymentGateway {
     @Value("${stripe.webhookSecretKey}")
     private String webHookSecretKey;
 
+    private static SessionCreateParams.PaymentIntentData paymentIntentData(Order order) {
+        return SessionCreateParams.PaymentIntentData.builder()
+                .putMetadata("order_id", order.getId().toString())
+                .build();
+    }
 
     @Override
     public CheckoutSession createCheckoutSession(Order order) {
@@ -32,7 +37,7 @@ public class StripePaymentGateway implements PaymentGateway {
                     .setMode(SessionCreateParams.Mode.PAYMENT)
                     .setSuccessUrl(websiteUrl + "/checkout-success?orderId=" + order.getId())
                     .setCancelUrl(websiteUrl + "/checkout-cancel")
-                    .putMetadata("order_id", order.getId().toString());
+                    .setPaymentIntentData(paymentIntentData(order));
 
             order.getItems().forEach(item -> {
                 var lineItem = createLineItem(item);
