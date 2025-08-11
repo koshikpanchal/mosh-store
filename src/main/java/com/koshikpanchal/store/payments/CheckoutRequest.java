@@ -1,4 +1,4 @@
-package com.koshikpanchal.store.dtos;
+package com.koshikpanchal.store.payments;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;

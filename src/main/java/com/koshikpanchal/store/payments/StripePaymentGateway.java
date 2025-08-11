@@ -1,9 +1,8 @@
-package com.koshikpanchal.store.services;
+package com.koshikpanchal.store.payments;
 
 import com.koshikpanchal.store.entity.Order;
 import com.koshikpanchal.store.entity.OrderItem;
 import com.koshikpanchal.store.entity.PaymentStatus;
-import com.koshikpanchal.store.exceptions.PaymentException;
 import com.stripe.exception.SignatureVerificationException;
 import com.stripe.exception.StripeException;
 import com.stripe.model.Event;

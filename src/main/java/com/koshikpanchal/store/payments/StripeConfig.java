@@ -1,4 +1,4 @@
-package com.koshikpanchal.store.config;
+package com.koshikpanchal.store.payments;
 
 import com.stripe.Stripe;
 import jakarta.annotation.PostConstruct;

@@ -1,4 +1,4 @@
-package com.koshikpanchal.store.services;
+package com.koshikpanchal.store.payments;
 
 import com.koshikpanchal.store.entity.Order;
 
