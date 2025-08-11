@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL}
+
+websiteUrl: http://mystore.com
+payment:
+  service: paypal
+mail:
+  host: https://smtp.gmail.com
+  port: 5761
