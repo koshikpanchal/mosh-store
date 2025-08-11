@@ -41,11 +41,22 @@ public class CheckoutService {
             var session = paymentGateway.createCheckoutSession(order);
 
             cartService.clearCart(cart.getId());
-            
+
             return new CheckoutResponse(order.getId(), session.getCheckoutUrl());
         } catch (PaymentException ex) {
             orderRepository.delete(order);
             throw ex;
         }
+    }
+
+    public void handleWebhookEvent(WebhookRequest request) {
+        paymentGateway
+                .parseWebhookRequest(request)
+                .ifPresent(paymentResult -> {
+                    var order = orderRepository.findById(paymentResult.getOrderId()).orElseThrow();
+                    order.setStatus(paymentResult.getPaymentStatus());
+                    orderRepository.save(order);
+                });
+
     }
 }

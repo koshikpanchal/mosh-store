@@ -1,6 +1,6 @@
 package com.koshikpanchal.store.entity;
 
-public enum OrderStatus {
+public enum PaymentStatus {
     PENDING,
     PAID,
     FAILED,
