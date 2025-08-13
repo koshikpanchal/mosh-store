@@ -99,7 +99,7 @@ public class UserController {
     }
 
     @PostMapping("/{id}/change-password")
-    public ResponseEntity<Void> registerUser(
+    public ResponseEntity<Void> changePassword(
             @PathVariable Long id,
             @RequestBody ChangePasswordRequest request
     ) {
