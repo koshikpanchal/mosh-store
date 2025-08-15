@@ -21,10 +21,10 @@ public class ProductController {
 
     @GetMapping
     public List<ProductDto> getAllProduct(
-            @RequestParam( name="categoryId", required = false ) Byte categoryId
+            @RequestParam(name = "categoryId", required = false) Byte categoryId
     ) {
         List<Product> products;
-        if(categoryId != null) {
+        if (categoryId != null) {
             products = productRepository.findByCategory_Id(categoryId);
         } else {
             products = productRepository.findAllWithCategory();
@@ -36,7 +36,7 @@ public class ProductController {
     @GetMapping("/{id}")
     public ResponseEntity<ProductDto> getProductById(@PathVariable Long id) {
         var product = productRepository.findById(id).orElse(null);
-        if(product == null) {
+        if (product == null) {
             ResponseEntity.notFound().build();
         }
 
@@ -44,7 +44,7 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<ProductDto> addProduct( @RequestBody ProductDto productDto ) {
+    public ResponseEntity<ProductDto> addProduct(@RequestBody ProductDto productDto) {
         var category = categoryRepository.findById(productDto.getCategoryId()).orElse(null);
         if (category == null) {
             return ResponseEntity.badRequest().build();
@@ -69,7 +69,7 @@ public class ProductController {
         }
 
         var product = productRepository.findById(id).orElse(null);
-        if(product == null) {
+        if (product == null) {
             return ResponseEntity.notFound().build();
         }
 
@@ -82,11 +82,11 @@ public class ProductController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(
+    public ResponseEntity<Void> deleteProduct(
             @PathVariable(name = "id") Long id
     ) {
         var product = productRepository.findById(id).orElse(null);
-        if(product == null) {
+        if (product == null) {
             return ResponseEntity.notFound().build();
         }
 
